@@ -51,17 +51,19 @@ export default function App() {
     if (FlippedCards.length === 0) {
       setFlippedCards([...FlippedCards, item]);
     } else if (FlippedCards.length === 1) {
-      if (FlippedCards[0].image === item.image) {
-        setMatches(matches + 1);
-        setMatchedCards([...matchedCards, item, FlippedCards[0]]);
-      } else {
-        setAttempts(attempts + 1);
-      }
-      setFlippedCards([...FlippedCards, item]);
+      if (FlippedCards[0].id !== item.id) {
+        if (FlippedCards[0].image === item.image) {
+          setMatches(matches + 1);
+          setMatchedCards([...matchedCards, item, FlippedCards[0]]);
+        } else {
+          setAttempts(attempts + 1);
+        }
+        setFlippedCards([...FlippedCards, item]);
 
-      setTimeout(() => {
-        setFlippedCards([]);
-      }, 1500);
+        setTimeout(() => {
+          setFlippedCards([]);
+        }, 1500);
+      }
     }
   };
 
